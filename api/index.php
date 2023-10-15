@@ -4,14 +4,6 @@
     $contents = file_get_contents("https://jsonplaceholder.typicode.com/posts/".$n);
 
     $obj = json_decode($contents, true);
-
-    echo $obj["title"];
-
-    $file = fopen("page.html", "w");
-
-    fwrite($file, "<p>My name is John Doe</p>");
-
-    fclose($file);
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +14,6 @@
     <title>PHP on Vercel</title>
 </head>
 <body>
-    <p style="color: red; text-align:center;"><?php echo "Hello World dude"; ?></p>
+    <p style="color: red; text-align:center;"><?php echo $obj["title"]; ?></p>
 </body>
 </html>
