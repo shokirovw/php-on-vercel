@@ -8,6 +8,8 @@ $db->query('CREATE TABLE IF NOT EXISTS "visits" (
     "time" DATETIME
 )');
 
+$file = fopen("somefile.html", "w");
+
 $statement = $db->prepare('INSERT INTO "visits" ("url", "time") VALUES (:url, :time)');
 $statement->bindValue(':url', ($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? 'https') . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
 $statement->bindValue(':time', date('Y-m-d H:i:s'));
