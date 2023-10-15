@@ -8,6 +8,8 @@ $db->query('CREATE TABLE IF NOT EXISTS "visits" (
     "time" DATETIME
 )');
 
+var_dump(openssl_get_cert_locations());
+
 $file = fopen("/tmp/somefile.html", "w");
 
 $statement = $db->prepare('INSERT INTO "visits" ("url", "time") VALUES (:url, :time)');
@@ -20,3 +22,5 @@ $visits = $db->querySingle('SELECT COUNT(id) FROM "visits"');
 echo("User visits: $visits");
 
 $db->close();
+
+
